@@ -1,0 +1,36 @@
+image: python:latest
+
+stages:
+ - check
+ - test
+ - run
+
+quality_checker:
+  stage: check
+  before_script:
+   - echo "installing pylint"
+   - pip install pylint
+   - echo "installing pylint done"
+  script:
+   - echo "checking source code with pylint"
+   - pylint LoggerModule.py
+   - pylint RuntimeModule.py
+   - pylint CheckModule.py
+   - pylint Gui.py
+   - echo "linting done"
+
+test:
+  stage: test
+  script:
+   - echo "start unit test"
+   - python -m unittest CheckModuleTest
+  after_script:
+   - echo "unit test done"
+
+run:
+  stage: run
+  script:
+   - python RuntimeModule.py
+  after_script:
+  only:
+   - master
