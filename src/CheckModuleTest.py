@@ -24,5 +24,6 @@ class TestRuntimeModule(unittest.TestCase):
         mock_send_email.assert_called()
         
         
+        
 if __name__ == '__main__':
     unittest.main(verbosity=2)
