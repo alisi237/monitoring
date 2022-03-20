@@ -1,6 +1,5 @@
 import ExceedanceCheckModule as ECM
 import MailerService as MS
-import MonitoringGui as MG
 import unittest
 from unittest import mock
 import time
@@ -33,11 +32,6 @@ class TestRuntimeModule(unittest.TestCase):
         last_time = time.time()
         time.sleep(2)
         self.assertTrue(ECM.check_last_executed(last_time, 1))
-    
-    @mock.patch.object(MG, 'is_float')    
-    def check_is_float(self, mock):
-        self.assertTrue(MG.is_float(12))
-        
-        
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
