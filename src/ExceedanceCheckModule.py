@@ -42,6 +42,7 @@ def get_message_for_mail(data_source, hard_limit, value):
 def get_message_for_log(data_source, limit_type, limit_value, value):
     return str(pl.uname().node) + " - " + data_source + " --- " + limit_type + ": " + str(limit_value) + "% --- current value: " +  str(value) + "%"
 
+# checks for all three data sources, if last logging is over one minute ago
 def check_last_logged(data_source):
     global last_logged_cpu
     global last_logged_ram
